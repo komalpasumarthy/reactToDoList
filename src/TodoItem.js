@@ -12,25 +12,30 @@ const TodoItem = ({ todo, onStatusChange, onDeleteTodo }) => {
   const handleDeleteClick = () => {
     onDeleteTodo(uniqueNo);
   };
-
-  return (
-    <li className={`todo-item-container d-flex flex-row ${isChecked ? 'checked' : ''}`}>
-      <input
-        type="checkbox"
-        className="checkbox-input"
-        checked={isChecked}
-        onChange={handleCheckboxChange}
-      />
-      <div className="label-container d-flex flex-row">
-        <label className="checkbox-label" htmlFor={`checkbox${uniqueNo}`}>
-          {text}
-        </label>
-        <div className="delete-icon-container">
-        <img src={binImage} className="binImage" alt = "delete" onClick={() => onDeleteTodo(todo.id)} />
+    return (
+      <li className="todo-item-container d-flex flex-row">
+        <input
+          type="checkbox"
+          className="checkbox-input"
+          checked={isChecked}
+          onChange={() => onStatusChange(uniqueNo)}
+        />
+        <div className="label-container d-flex flex-row">
+          <label
+            htmlFor={`checkbox${uniqueNo}`}
+            className={`checkbox-label ${isChecked ? 'checked' : ''}`}
+          >
+            {text}
+          </label>
+          <div className="delete-icon-container">
+            <i
+              className="far fa-trash-alt delete-icon"
+              onClick={() => onDeleteTodo(uniqueNo)} // Pass the uniqueNo to onDeleteTodo function
+            ></i>
+          </div>
         </div>
-      </div>
-    </li>
-  );
-};
+      </li>
+    );
+  }
 
 export default TodoItem;

@@ -7,7 +7,9 @@ import TodoListContainer from './TodoListContainer'; // Import your main compone
 
 function App() {
     return (
-        <TodoListContainer /> // Render your main component
+        <Routes>
+            <Route  path="/" element = {<TodoListContainer />}/>
+            </Routes> 
     );
 }
 
